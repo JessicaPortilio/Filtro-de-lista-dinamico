@@ -1,0 +1,158 @@
+/* Container principal que envolve todo o conteúdo */
+.container {
+    padding: 25px; /* Espaçamento interno de 25 pixels em todos os lados */
+    max-width: 550px; /* Largura máxima do container */
+    margin: 30px auto; /* Centraliza o container na página com margem superior/inferior de 30px */
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%); /* Gradiente sutil de branco para cinza claro */
+    border-radius: 12px; /* Bordas arredondadas */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12); /* Sombra suave ao redor */
+    border: 1px solid rgba(255, 255, 255, 0.3); /* Borda sutil semi-transparente */
+}
+
+/* Estilo do título principal */
+.title {
+    font-size: 24px; /* Tamanho da fonte */
+    font-weight: 600; /* Peso da fonte (semi-negrito) */
+    color: #2c3e50; /* Cor do texto - azul escuro */
+    text-align: center; /* Centraliza o texto */
+    margin-bottom: 20px; /* Espaço abaixo do título */
+    position: relative; /* Permite posicionar elementos filhos relativamente */
+    padding-bottom: 10px; /* Espaço para a linha decorativa abaixo */
+
+    /* Linha decorativa abaixo do título */
+    &:after {
+        content: ''; /* Conteúdo vazio (para elemento decorativo) */
+        position: absolute; /* Posicionamento absoluto em relação ao título */
+        bottom: 0; /* Alinha na base do elemento pai */
+        left: 50%; /* Começa no meio */
+        transform: translateX(-50%); /* Centraliza perfeitamente */
+        width: 100%; /* Largura total */
+        height: 3px; /* Altura da linha */
+        background: linear-gradient(90deg, #3498db, #9b59b6); /* Gradiente colorido */
+        border-radius: 3px; /* Bordas levemente arredondadas */
+    }
+}
+
+/* Estilo da caixa de pesquisa */
+.search-box {
+    width: 94%; /* Largura quase total (deixa espaço nas laterais) */
+    padding: 12px 16px; /* Espaçamento interno confortável */
+    font-size: 15px; /* Tamanho legível da fonte */
+    border: 2px solid #e0e3e7; /* Borda sutil cinza */
+    border-radius: 8px; /* Bordas arredondadas */
+    margin-bottom: 20px; /* Espaço abaixo da caixa */
+    outline: none; /* Remove o contorno padrão ao focar */
+    transition: all 0.3s ease; /* Suaviza todas as animações */
+    background-color: #f8fafc; /* Cor de fundo suave */
+
+    /* Estilo quando a caixa está em foco (clicada) */
+    &:focus {
+        border-color: #3498db; /* Muda a cor da borda para azul */
+        box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2); /* Sombra sutil azul */
+        background-color: #ffffff; /* Fundo branco puro */
+    }
+
+    /* Estilo do texto de placeholder (dica) */
+    &::placeholder {
+        color: #a0aec0; /* Cor cinza azulada */
+    }
+}
+
+/* Estilo da lista de itens */
+.list-group {
+    list-style: none; /* Remove os marcadores padrão de lista */
+    padding: 0; /* Remove padding padrão */
+    margin: 0; /* Remove margem padrão */
+}
+
+/* Estilo de cada item da lista */
+.list-group-item {
+    padding: 12px 16px; /* Espaçamento interno confortável */
+    font-size: 15px; /* Tamanho legível da fonte */
+    background-color: #ffffff; /* Fundo branco */
+    border: 1px solid #e2e8f0; /* Borda sutil */
+    border-radius: 8px; /* Bordas arredondadas */
+    margin-bottom: 10px; /* Espaço entre itens */
+    transition: all 0.3s ease; /* Suaviza todas as animações */
+    cursor: pointer; /* Muda o cursor para indicar que é clicável */
+    display: flex; /* Layout flexível para alinhar conteúdo */
+    align-items: center; /* Centraliza verticalmente os itens */
+
+    /* Efeito quando o mouse passa por cima */
+    &:hover {
+        background: linear-gradient(135deg, #f6f9ff 0%, #ebf4ff 100%); /* Gradiente sutil azul */
+        box-shadow: 0 4px 8px rgba(52, 152, 219, 0.1); /* Sombra suave */
+        transform: translateY(-2px); /* Move ligeiramente para cima */
+        border-color: #cbd5e0; /* Muda cor da borda */
+    }
+
+    /* Efeito quando o item é clicado */
+    &:active {
+        transform: translateY(0); /* Retorna à posição original */
+    }
+
+    /* Bolinha decorativa antes de cada item */
+    &:before {
+        content: ''; /* Conteúdo vazio */
+        display: inline-block; /* Permite definir largura/altura */
+        width: 8px; /* Tamanho da bolinha */
+        height: 8px; /* Tamanho da bolinha */
+        border-radius: 50%; /* Forma circular */
+        background: #3498db; /* Cor azul */
+        margin-right: 12px; /* Espaço entre a bolinha e o texto */
+        flex-shrink: 0; /* Impede que diminua em telas pequenas */
+    }
+}
+
+/* Estilo para mensagem "Nenhum resultado" */
+.no-results {
+    color: #666; /* Cor cinza */
+    font-style: italic; /* Texto em itálico */
+    text-align: center; /* Centraliza o texto */
+    padding: 20px; /* Espaçamento interno */
+    justify-content: center; /* Centraliza horizontalmente */
+
+    /* Remove a bolinha decorativa */
+    &:before {
+        display: none;
+    }
+}
+
+/* Estilo para o destaque dos termos pesquisados */
+// ::ng-deep: Força o estilo a ser aplicado mesmo em conteúdo dinâmico. Usado para o highlight que é inserido via innerHTML.
+::ng-deep .highlight {
+    background-color: #ffeb3b !important; /* Fundo amarelo */
+    padding: 0 2px !important; /* Pequeno espaçamento */
+    border-radius: 3px !important; /* Bordas arredondadas */
+    font-weight: bold !important; /* Texto em negrito */
+    color: #000 !important; /* Cor do texto preto */
+}
+
+/* Animação de aparecimento dos itens */
+@keyframes fadeIn {
+    from {
+        opacity: 0; /* Começa invisível */
+        transform: translateY(10px); /* Começa 10px abaixo */
+    }
+    to {
+        opacity: 1; /* Termina totalmente visível */
+        transform: translateY(0); /* Termina na posição normal */
+    }
+}
+
+/* Aplica a animação a todos os itens da lista */
+.list-group-item {
+    animation: fadeIn 0.4s ease forwards; /* Duração e estilo da animação */
+}
+
+/* Atrasos progressivos para criar efeito cascata */
+.list-group-item:nth-child(1) { animation-delay: 0.1s; }
+.list-group-item:nth-child(2) { animation-delay: 0.2s; }
+.list-group-item:nth-child(3) { animation-delay: 0.3s; }
+.list-group-item:nth-child(4) { animation-delay: 0.4s; }
+.list-group-item:nth-child(5) { animation-delay: 0.5s; }
+.list-group-item:nth-child(6) { animation-delay: 0.6s; }
+.list-group-item:nth-child(7) { animation-delay: 0.7s; }
+.list-group-item:nth-child(8) { animation-delay: 0.8s; }
+.list-group-item:nth-child(9) { animation-delay: 0.9s; }
+.list-group-item:nth-child(10) { animation-delay: 1s; }
